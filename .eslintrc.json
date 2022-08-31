@@ -12,6 +12,7 @@
   "ignorePatterns": ["build/", "dist/"],
   "rules": {
     "indent": "off",
+    "import/no-import-module-exports": "off",
     "@typescript-eslint/indent": ["error", 2],
     "comma-dangle": ["error", "always-multiline"],
     "import/no-extraneous-dependencies": "off",
