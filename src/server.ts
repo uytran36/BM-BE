@@ -1,5 +1,6 @@
 import http from 'http';
 import app from './app';
+import { ENV } from './configs';
 
 const normalizePort = (val: string) => {
   const port = parseInt(val, 10);
@@ -13,7 +14,7 @@ const normalizePort = (val: string) => {
   return false;
 };
 
-const port = normalizePort(process.env.PORT || '5000');
+const port = normalizePort(ENV.PORT || '5000');
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port);

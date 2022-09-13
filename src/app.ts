@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import { ENV } from './configs';
 
 const app = express();
 
 mongoose
-  .connect(`mongodb://${process.env.MONGODB}`)
+  .connect(`mongodb://${ENV.MONGODB}`)
   .then(() => {
     process.stdout.write('connected to MongoDB\n');
   })
