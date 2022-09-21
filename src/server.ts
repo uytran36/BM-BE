@@ -14,7 +14,7 @@ const normalizePort = (val: string) => {
   return false;
 };
 
-const port = normalizePort(ENV.PORT || '5000');
+const port = normalizePort(ENV.PORT);
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port);

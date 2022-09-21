@@ -4,6 +4,6 @@ export type UserType = {
   name: string;
   dateOfBirth: Date;
   email: string;
-  gender: string;
   type: string;
+  salt: string;
 };

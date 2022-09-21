@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { ENV } from './configs';
+import userRoute from './routers/user';
 
 const app = express();
 
@@ -23,5 +24,6 @@ const corsOptions = {
 };
 app.use(express.json({ inflate: false }));
 app.use(cors(corsOptions));
+app.use('/api', userRoute);
 
 export default app;

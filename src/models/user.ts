@@ -2,15 +2,20 @@ import mongoose from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
 const userSchema = new mongoose.Schema({
-  name: { type: 'string', required: true },
+  name: { type: String, required: true },
   dateOfBirth: { type: Date, required: false },
-  email: { type: 'string', required: true },
-  username: { type: 'string', required: true },
-  password: { type: 'string', required: true },
-  gender: { type: 'string', required: true },
-  type: { type: 'string', requied: true },
+  email: { type: String, required: true },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    maxLength: 20,
+  },
+  password: { type: String, required: true },
+  type: { type: String, required: true },
+  salt: { type: String, required: true, unique: true },
 });
 
 userSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('users', userSchema);
+export default mongoose.model('users', userSchema);
