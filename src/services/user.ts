@@ -12,6 +12,24 @@ const createUser = (userData: UserType) => {
   return User.create(data);
 };
 
+const login = async (userData: UserType) => {
+  try {
+    const user = await User.findOne({ username: userData.username });
+
+    const salt = user?.salt;
+    const hashedPassword = bcrypt.hashSync(userData.password, salt);
+    const pwdWithPepper = bcrypt.hashSync(hashedPassword, ENV.PEPPER);
+
+    if (user?.password === pwdWithPepper) {
+      return true;
+    }
+    return false;
+  } catch (err) {
+    return err;
+  }
+};
+
 export default {
   createUser,
+  login,
 };

@@ -7,3 +7,9 @@ export type UserType = {
   type: string;
   salt: string;
 };
+
+export type ApiResponse = {
+  message: string;
+  data: Array<object>;
+  success: boolean;
+};
