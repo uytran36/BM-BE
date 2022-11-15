@@ -13,3 +13,9 @@ export type ApiResponse = {
   data: Array<object>;
   success: boolean;
 };
+
+export type LoginResponse = {
+  isLoginSuccess: boolean;
+  data: object;
+  err?: any;
+};

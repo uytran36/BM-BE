@@ -23,11 +23,11 @@ async function createUser(req: Request, res: Response) {
 
 async function login(req: Request, res: Response<ApiResponse>) {
   try {
-    const isLogin = await userService.login(req.body);
-    if (isLogin) {
+    const { isLoginSuccess, data } = await userService.login(req.body);
+    if (isLoginSuccess) {
       res.json({
         message: 'Login successfully!',
-        data: [],
+        data: [data],
         success: true,
       });
     } else {
@@ -48,7 +48,38 @@ async function login(req: Request, res: Response<ApiResponse>) {
   }
 }
 
+async function getAccessToken(req: Request, res: Response<ApiResponse>) {
+  try {
+    const { isGetTokenSuccess, data } = await userService.getAccessToken(
+      req.body.refreshToken,
+      req.body.username,
+    );
+    if (isGetTokenSuccess) {
+      res.json({
+        message: 'Get access token successfully!',
+        data: [data],
+        success: true,
+      });
+    } else {
+      res.json({
+        message: 'Get access token failed!',
+        data: [],
+        success: false,
+      });
+    }
+  } catch (err: any) {
+    if (err instanceof Error) {
+      res.json({
+        message: err.toString(),
+        data: [],
+        success: false,
+      });
+    }
+  }
+}
+
 export default {
   createUser,
   login,
+  getAccessToken,
 };

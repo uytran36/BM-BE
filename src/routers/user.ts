@@ -5,5 +5,6 @@ const router = Router();
 
 router.post('/user/singup', userController.createUser);
 router.post('/user/login', userController.login);
+router.post('/user/refresh-token', userController.getAccessToken);
 
 export default router;
