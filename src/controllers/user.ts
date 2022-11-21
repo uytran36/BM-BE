@@ -78,8 +78,39 @@ async function getAccessToken(req: Request, res: Response<ApiResponse>) {
   }
 }
 
+async function getUserData(req: Request, res: Response) {
+  const { username } = res.locals;
+
+  try {
+    const userData = await userService.getUserData(username);
+
+    if (userData) {
+      res.json({
+        message: 'Get user data successfully!',
+        data: [userData],
+        success: true,
+      });
+    } else {
+      res.json({
+        message: 'User not found',
+        data: [],
+        success: false,
+      });
+    }
+  } catch (err: any) {
+    if (err instanceof Error) {
+      res.json({
+        message: err.toString(),
+        data: [],
+        success: false,
+      });
+    }
+  }
+}
+
 export default {
   createUser,
   login,
   getAccessToken,
+  getUserData,
 };

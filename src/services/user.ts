@@ -65,8 +65,14 @@ const getAccessToken = async (refreshToken: string, username: string) => {
   };
 };
 
+const getUserData = async (username: string) => {
+  const user = await User.findOne({ username }, { password: 0, salt: 0 });
+  return user;
+};
+
 export default {
   createUser,
   login,
   getAccessToken,
+  getUserData,
 };
