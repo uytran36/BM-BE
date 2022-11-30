@@ -8,6 +8,26 @@ export type UserType = {
   salt: string;
 };
 
+export type BookType = {
+  name: string;
+  authorId: string;
+  publishser: string;
+  description?: string;
+  publishedOn?: Date;
+  edition?: string;
+};
+
+export type AuthorType = {
+  name: string;
+  nickname?: string;
+  dateOfBirth?: Date;
+};
+
+export type BookAuthorType = {
+  authorId: string;
+  bookId: string;
+};
+
 export type ApiResponse = {
   message: string;
   data: Array<object>;

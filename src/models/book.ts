@@ -2,14 +2,13 @@ import mongoose from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
 const bookSchema = new mongoose.Schema({
-  name: { type: 'string', required: true },
-  authorId: { type: 'string', required: true },
-  publishser: { type: 'string', required: true },
-  description: { type: 'string', default: false },
-  publishedOn: { type: 'string', default: false },
-  edition: { type: 'string', default: false },
+  name: { type: String, required: true },
+  publishser: { type: String, required: true },
+  description: { type: String, default: false },
+  publishedOn: { type: String, default: false },
+  edition: { type: String, default: false },
 });
 
 bookSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('books', bookSchema);
+export default mongoose.model('books', bookSchema);

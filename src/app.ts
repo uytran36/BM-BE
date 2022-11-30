@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { ENV } from './configs';
 import userRoute from './routers/user';
 import { authen } from './middlewares/authen';
+import bookRoute from './routers/book';
 
 const app = express();
 
@@ -26,6 +27,9 @@ const corsOptions = {
 app.use(express.json({ inflate: false }));
 app.use(cors(corsOptions));
 app.use('/api/user/get-info-user', authen);
+app.use('/api/book', authen);
+app.use('/api/author', authen);
 app.use('/api', userRoute);
+app.use('/api', bookRoute);
 
 export default app;

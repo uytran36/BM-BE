@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import userService from '../services/user';
 import { ApiResponse } from '../types';
 
-async function createUser(req: Request, res: Response) {
+async function createUser(req: Request, res: Response<ApiResponse>) {
   try {
     await userService.createUser(req.body);
     res.json({
@@ -78,7 +78,7 @@ async function getAccessToken(req: Request, res: Response<ApiResponse>) {
   }
 }
 
-async function getUserData(req: Request, res: Response) {
+async function getUserData(req: Request, res: Response<ApiResponse>) {
   const { username } = res.locals;
 
   try {

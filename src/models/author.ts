@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
 const authorsSchema = new mongoose.Schema({
-  name: { type: 'string', required: true },
-  nickname: { type: 'string', required: false },
-  dateOfBirth: { type: 'string', default: false },
+  name: { type: String, required: true },
+  nickname: { type: String, required: false },
+  dateOfBirth: { type: String, default: false },
 });
 
 authorsSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('books', authorsSchema);
+export default mongoose.model('books', authorsSchema);
